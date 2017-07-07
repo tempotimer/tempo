@@ -1,11 +1,11 @@
 {
-  "name": "Mobster",
+  "name": "Tempo",
   "version": "0.0.37",
   "description": "A cross-platform mob programming timer built on web technologies",
   "main": "main.js",
   "scripts": {
     "start": "npm test && npm run build && electron .",
-    "build": "elm make src/timer/Main.elm src/setup/Main.elm --output elm.js && elm css src/Stylesheets.elm",
+    "build": "elm make src/timer/Main.elm src/setup/Main.elm --output elm.js",
     "test-watch": "yarn test; fswatch -0 src tests -e '.*' -i \\.elm$ | xargs -0 -n1 -I{} yarn test",
     "test": "clear && echo 'running tests' && elm-test",
     "pack": "build --dir",
@@ -16,7 +16,7 @@
     "release": "build --mac --win --linux"
   },
   "build": {
-    "appId": "com.dillonkearns.mobster",
+    "appId": "com.dillonkearns.tempo",
     "mac": {
       "category": "Utility"
     },
@@ -37,7 +37,6 @@
     "devtron": "^1.4.0",
     "electron": "^1.6.6",
     "electron-builder": "^11.7.0",
-    "elm": "^0.18.0",
     "elm-css": "^0.6.0",
     "elm-test": "^0.18.2"
   },
