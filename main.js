@@ -79,8 +79,18 @@ function onClickTrayIcon() {
   }
 }
 
+function countdown() {
+  setTimeout(function() {
+    tray.setTitle(`${secondsRemaining}`)
+    secondsRemaining -= 1
+    countdown()
+  }, 1000)
+}
 const createTray = () => {
   tray = new Tray(path.join(assetsDirectory, 'tray-icon.png'))
+  countdown()
+  secondsRemaining = 60
+  tray.setTitle('hello!')
   tray.on('right-click', onClickTrayIcon)
   tray.on('double-click', onClickTrayIcon)
   tray.on('click', onClickTrayIcon)
