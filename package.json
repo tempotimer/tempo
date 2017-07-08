@@ -50,6 +50,7 @@
     "fs": "^0.0.1-security",
     "highlight.js": "^9.10.0",
     "jquery": "^3.1.1",
+    "moment": "^2.18.1",
     "ms": "^0.7.2",
     "node-osascript": "^2.0.0"
   }
