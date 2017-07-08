@@ -7,7 +7,8 @@ const {
   BrowserWindow,
   dialog,
   shell,
-  remote
+  remote,
+  Notification
 } = require('electron')
 const fs = require('fs')
 
@@ -86,10 +87,17 @@ function countdown() {
     secondsRemaining -= 1
     if (secondsRemaining > 0) {
       countdown()
+    } else {
+      notifyTimerFinished()
     }
     tray.setTitle(countdownDisplay.countdownToString(secondsRemaining))
   }, 1000)
 }
+
+function notifyTimerFinished() {
+  new Notification({ title: 'You finished your interval! 👌👌👌' }).show()
+}
+
 const createTray = () => {
   tray = new Tray(path.join(assetsDirectory, 'tray-icon.png'))
   tray.on('double-click', onClickTrayIcon)
