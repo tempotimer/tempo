@@ -85,12 +85,13 @@ function countdown() {
   tray.setTitle(countdownDisplay.countdownToString(secondsRemaining))
   setTimeout(function() {
     secondsRemaining -= 1
+    tray.setTitle(countdownDisplay.countdownToString(secondsRemaining))
     if (secondsRemaining > 0) {
       countdown()
     } else {
+      tray.setTitle('')
       notifyTimerFinished()
     }
-    tray.setTitle(countdownDisplay.countdownToString(secondsRemaining))
   }, 1000)
 }
 
