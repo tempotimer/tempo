@@ -4,7 +4,7 @@
   "description": "A cross-platform mob programming timer built on web technologies",
   "main": "main.js",
   "scripts": {
-    "start": "npm test && npm run build && electron .",
+    "start": "electron .",
     "build": "elm make src/timer/Main.elm src/setup/Main.elm --output elm.js",
     "test-watch": "yarn test; fswatch -0 src tests -e '.*' -i \\.elm$ | xargs -0 -n1 -I{} yarn test",
     "test": "clear && echo 'running tests' && elm-test",
