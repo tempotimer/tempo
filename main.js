@@ -73,7 +73,7 @@ function toggleMainWindow() {
 }
 
 function onClickTrayIcon() {
-  startCountdown(0.1)
+  startCountdown(25)
 }
 
 function startCountdown(minutes) {
