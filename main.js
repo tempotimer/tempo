@@ -90,7 +90,7 @@ function countdown() {
 const createTray = () => {
   tray = new Tray(path.join(assetsDirectory, 'tray-icon.png'))
   countdown()
-  secondsRemaining = 60
+  secondsRemaining = 11
   tray.setTitle(countdownDisplay.countdownToString(secondsRemaining))
   tray.on('right-click', onClickTrayIcon)
   tray.on('double-click', onClickTrayIcon)
