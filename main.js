@@ -72,15 +72,16 @@ function toggleMainWindow() {
 }
 
 function onClickTrayIcon() {
-  if (!timerWindow) {
-    toggleMainWindow()
-  } else {
-    closeTimer()
-    focusMainWindow()
-  }
+  startCountdown(0.1)
+}
+
+function startCountdown(minutes) {
+  secondsRemaining = 60 * minutes
+  countdown()
 }
 
 function countdown() {
+  tray.setTitle(countdownDisplay.countdownToString(secondsRemaining))
   setTimeout(function() {
     secondsRemaining -= 1
     if (secondsRemaining > 0) {
@@ -91,10 +92,6 @@ function countdown() {
 }
 const createTray = () => {
   tray = new Tray(path.join(assetsDirectory, 'tray-icon.png'))
-  countdown()
-  secondsRemaining = 11
-  tray.setTitle(countdownDisplay.countdownToString(secondsRemaining))
-  tray.on('right-click', onClickTrayIcon)
   tray.on('double-click', onClickTrayIcon)
   tray.on('click', onClickTrayIcon)
 }
