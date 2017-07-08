@@ -82,9 +82,11 @@ function onClickTrayIcon() {
 
 function countdown() {
   setTimeout(function() {
-    tray.setTitle(countdownDisplay.countdownToString(secondsRemaining))
     secondsRemaining -= 1
-    countdown()
+    if (secondsRemaining > 0) {
+      countdown()
+    }
+    tray.setTitle(countdownDisplay.countdownToString(secondsRemaining))
   }, 1000)
 }
 const createTray = () => {
