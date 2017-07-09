@@ -72,8 +72,15 @@ function toggleMainWindow() {
   }
 }
 
+let isActive
+
 function onClickTrayIcon() {
-  startCountdown(25)
+  if (isActive === undefined) {
+    isActive = true
+    startCountdown(25)
+  } else {
+    isActive = !isActive
+  }
 }
 
 function startCountdown(minutes) {
@@ -84,7 +91,9 @@ function startCountdown(minutes) {
 function countdown() {
   tray.setTitle(countdownDisplay.countdownToString(secondsRemaining))
   setTimeout(function() {
-    secondsRemaining -= 1
+    if (isActive) {
+      secondsRemaining -= 1
+    }
     tray.setTitle(countdownDisplay.countdownToString(secondsRemaining))
     if (secondsRemaining > 0) {
       countdown()
