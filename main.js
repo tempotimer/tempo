@@ -123,10 +123,10 @@ function onReady() {
 }
 
 function registerShortcuts() {
-  globalShortcut.register('CommandOrControl+:', () => {
+  globalShortcut.register('CommandOrControl+"', () => {
     startCountdown(5)
   })
-  globalShortcut.register('CommandOrControl+"', () => {
+  globalShortcut.register('CommandOrControl+:', () => {
     startCountdown(25)
   })
 }
