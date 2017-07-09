@@ -99,6 +99,8 @@ function countdown() {
     if (secondsRemaining === 0) {
       tray.setTitle('')
       notifyTimerFinished()
+      isActive = false
+      secondsRemaining = -1
     }
   }, 1000)
 }
