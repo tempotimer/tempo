@@ -123,6 +123,9 @@ function registerShortcuts() {
   globalShortcut.register('CommandOrControl+:', () => {
     startCountdown(5)
   })
+  globalShortcut.register('CommandOrControl+"', () => {
+    startCountdown(25)
+  })
 }
 
 // This method will be called when Electron has finished
