@@ -117,6 +117,7 @@ function onReady() {
   createTray()
   registerShortcuts()
   countdown()
+  app.dock.hide()
 }
 
 function registerShortcuts() {
