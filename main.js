@@ -73,10 +73,10 @@ function toggleMainWindow() {
 }
 
 let isActive
+let secondsRemaining
 
 function onClickTrayIcon() {
   if (isActive === undefined) {
-    isActive = true
     startCountdown(25)
   } else {
     isActive = !isActive
@@ -84,20 +84,19 @@ function onClickTrayIcon() {
 }
 
 function startCountdown(minutes) {
+  isActive = true
   secondsRemaining = 60 * minutes
-  countdown()
+  tray.setTitle(countdownDisplay.countdownToString(secondsRemaining))
 }
 
 function countdown() {
-  tray.setTitle(countdownDisplay.countdownToString(secondsRemaining))
   setTimeout(function() {
-    if (isActive) {
+    if (isActive && secondsRemaining > 0) {
       secondsRemaining -= 1
+      tray.setTitle(countdownDisplay.countdownToString(secondsRemaining))
     }
-    tray.setTitle(countdownDisplay.countdownToString(secondsRemaining))
-    if (secondsRemaining > 0) {
-      countdown()
-    } else {
+    countdown()
+    if (secondsRemaining === 0) {
       tray.setTitle('')
       notifyTimerFinished()
     }
@@ -116,6 +115,14 @@ const createTray = () => {
 
 function onReady() {
   createTray()
+  registerShortcuts()
+  countdown()
+}
+
+function registerShortcuts() {
+  globalShortcut.register('CommandOrControl+:', () => {
+    startCountdown(5)
+  })
 }
 
 // This method will be called when Electron has finished
